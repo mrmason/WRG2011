@@ -1,0 +1,8 @@
+development:
+    adapter: mysql
+    database: wrg2011_dev
+    username: root
+    password: 
+    host: localhost
+    pool: 80
+    reconnect: true

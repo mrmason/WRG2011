@@ -1,0 +1,9 @@
+West Reading Galaxy - Fantasy Football 2011
+
+Installation Instructions...
+
+1) Download Via Git
+2) bundle install
+3) edit conf/database.yml
+4) rake db:migrate
+5) run Player.full_update from the console
