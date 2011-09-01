@@ -71,7 +71,7 @@ class Player < ActiveRecord::Base
   end
   
   def value
-    (self.data["now_cost"].to_f/10).to_s
+    "#{(self.data["now_cost"].to_f/10)}m"
  
   end
   

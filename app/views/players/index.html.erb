@@ -10,8 +10,6 @@
     <th>Value</th>
     <th>Points</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @players.each do |player| %>
@@ -24,8 +22,6 @@
     <td><%= player.value %></td>
     <td><%= player.total_points %></td>
     <td><%= link_to 'Show', player %></td>
-    <td><%= link_to 'Edit', edit_player_path(player) %></td>
-    <td><%= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

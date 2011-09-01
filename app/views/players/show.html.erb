@@ -16,6 +16,21 @@
 </p>
 
 <p>
+  <b>Team:</b>
+  <%= @player.team %>
+</p>
+
+<p>
+  <b>Current Value:</b>
+  <%= @player.value %>
+</p>
+
+<p>
+  <b>Total Points</b>
+  <%= @player.total_points %>
+</p>
+<p>
+
   <b>Web name:</b>
   <%= @player.web_name %>
 </p>
@@ -26,5 +41,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>
