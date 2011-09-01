@@ -4,15 +4,19 @@
   <tr>
     <th>Manager name</th>
     <th>Team name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Total Points</th>
+    <th>Cost</th>
+    <th>Remaining</th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.manager_name %></td>
     <td><%= team.team_name %></td>
+    <td><%= team.total_points %></td>
+    <td><%= team.cost_to_s %></td>
+    <td><%= team.remaining_to_s %></td>
+
     <td><%= link_to 'Show', team %></td>
   </tr>
 <% end %>
