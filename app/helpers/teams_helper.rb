@@ -12,9 +12,13 @@ module TeamsHelper
        end
     
     teams_list = @teams.map{|t| [t.send(points_type), t]}.sort {|x,y| y <=> x }
+    max_points = teams_list.first[0]
+    
+    
     teams_list.each do |t|
       points = t[0]
       team = t[1]
+      width = (288/max_points) * points
       if (team == @teams.first)
         class_txt = 'first'
       elsif (team == @teams.last) 
@@ -22,7 +26,7 @@ module TeamsHelper
       end 
       value_class_txt = "value #{class_txt}"
       row_output = content_tag(:td, link_to(team.manager_name, team_path(team)), :class => class_txt).html_safe
-      row_output += content_tag(:td, "#{image_tag('bar.png', :width => points, :height => 16)}#{points}".html_safe, :class => value_class_txt)
+      row_output += content_tag(:td, "#{image_tag('bar.png', :width => width, :height => 16)}#{points}".html_safe, :class => value_class_txt)
       output += content_tag(:tr, row_output)
 
     end

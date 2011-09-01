@@ -39,7 +39,7 @@ ul.menu li {
 
 /* Table Chart Styling */
 table.chart td.value {
-  background-image: url(../imaegs/gridline58.gif);
+  background-image: url(../images/gridline58.gif);
   background-repeat: repeat-x;
   background-position: left top;
   border-left: 1px solid #e5e5e5;
