@@ -1,0 +1,97 @@
+body {
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80%;
+
+}
+
+table.view {
+    background-color:#eee;
+    width: 800px;
+
+}
+table.view th {
+  text-align: left;
+}
+table.view td {
+  padding: 4px 6px;
+  border-bottom:1px solid #e5e5e5;
+  border-left:1px solid #e5e5e5;
+  background-color:#fff;
+
+}
+
+ul.menu  {
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  
+ 
+  
+}
+
+ul.menu li {
+  display:inline;
+  width: 100px;
+  margin-right: 10px;
+  padding: 3px;  
+}
+
+/* Table Chart Styling */
+table.chart td.value {
+  background-image: url(../imaegs/gridline58.gif);
+  background-repeat: repeat-x;
+  background-position: left top;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  padding:0;
+  border-bottom: none;
+  background-color:transparent;
+}
+
+table.chart td {
+  padding: 4px 6px;
+  border-bottom:1px solid #e5e5e5;
+  border-left:1px solid #e5e5e5;
+  background-color:#fff;
+}
+
+table.chart td.value img {
+  vertical-align: middle;
+  margin: 5px 5px 5px 0;
+}
+
+table.chart th {
+  text-align: left;
+  vertical-align:top;
+}
+
+table.chart td.last {
+  border-bottom:1px solid #e5e5e5;
+}
+
+table.chart td.first {
+  border-top:1px solid #e5e5e5;
+}
+
+.auraltext
+{
+
+  position: absolute;
+  font-size: 0;
+  left: -1000px;
+
+}
+
+table.chart {
+  background-image:url(../images/bg_fade.png);
+  background-repeat:repeat-x;
+  background-position:left top;
+  width: 33em;
+}
+
+caption {
+  font-size:90%;
+  font-style:italic;
+}
+/* End Table Chart Styling */

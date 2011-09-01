@@ -1,27 +1,23 @@
-<h1>Listing players</h1>
+<h2>Players</h2>
 
-<table>
+<table class="view">
   <tr>
     <th>FFID</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Web name</th>
+    <th>Name</th>
     <th>Team</th>
     <th>Value</th>
-    <th>Points</th>
-    <th></th>
+    <th>Total Points</th>
+    <th>Gameweek Points</th>
   </tr>
 
 <% @players.each do |player| %>
   <tr>
-    <td><%= player.ff_id %></td>
-    <td><%= player.first_name %></td>
-    <td><%= player.last_name %></td>
-    <td><%= player.web_name %></td>
+    <td><%= link_to player.ff_id, player%></td>
+    <td><%= link_to player.full_name, player %></td>
     <td><%= player.team %></td>
     <td><%= player.value %></td>
     <td><%= player.total_points %></td>
-    <td><%= link_to 'Show', player %></td>
+    <td><%= player.gameweek_points %></td>
   </tr>
 <% end %>
 </table>

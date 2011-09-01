@@ -83,4 +83,8 @@ class Player < ActiveRecord::Base
     "#{last_name}, #{first_name}"
   end
   
+  def gameweek_points
+    self.data["fixture_history"]["summary"].last.last rescue 0
+  end
+  
 end

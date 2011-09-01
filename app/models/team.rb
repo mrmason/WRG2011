@@ -43,6 +43,13 @@ class Team < ActiveRecord::Base
     
   end
   
+  def gameweek_points
+    total = 0 
+    self.players.each {|p| total+=p.gameweek_points}
+    total
+    
+  end
+  
   def cost
     total = Float(0)
     self.members.each {|member| total+=member.price_paid}

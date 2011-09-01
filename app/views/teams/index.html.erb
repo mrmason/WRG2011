@@ -1,6 +1,12 @@
-<h1>Listing teams</h1>
+<h2>Teams</h2>
 
-<table>
+<%= show_graph('total') -%>
+
+<%= show_graph('gameweek') -%>
+
+<h2>Data</h2>
+
+<table class='view'>
   <tr>
     <th>Manager name</th>
     <th>Team name</th>
@@ -11,13 +17,11 @@
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.manager_name %></td>
+    <td><%= link_to(team.manager_name, team_path(team)) %></td>
     <td><%= team.team_name %></td>
     <td><%= team.total_points %></td>
     <td><%= team.cost_to_s %></td>
     <td><%= team.remaining_to_s %></td>
-
-    <td><%= link_to 'Show', team %></td>
   </tr>
 <% end %>
 </table>
