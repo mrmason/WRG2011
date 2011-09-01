@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Team:</b>
+  <%= @member.team_id %>
+</p>
+
+<p>
+  <b>Player:</b>
+  <%= @member.player_id %>
+</p>
+
+<p>
+  <b>Price paid:</b>
+  <%= @member.price_paid %>
+</p>
+
+<p>
+  <b>Start week:</b>
+  <%= @member.start_week %>
+</p>
+
+<p>
+  <b>End week:</b>
+  <%= @member.end_week %>
+</p>
+
+
+<%= link_to 'Back', members_path %>

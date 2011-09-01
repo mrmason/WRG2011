@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  team_id: 1
+  player_id: 1
+  price_paid: 1
+  start_week: 1
+  end_week: 1
+
+two:
+  team_id: 1
+  player_id: 1
+  price_paid: 1
+  start_week: 1
+  end_week: 1

@@ -1,0 +1,22 @@
+<h1>Listing teams</h1>
+
+<table>
+  <tr>
+    <th>Manager name</th>
+    <th>Team name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%= team.manager_name %></td>
+    <td><%= team.team_name %></td>
+    <td><%= link_to 'Show', team %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

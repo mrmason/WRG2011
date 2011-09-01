@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Manager name:</b>
+  <%= @team.manager_name %>
+</p>
+
+<p>
+  <b>Team name:</b>
+  <%= @team.team_name %>
+</p>
+
+<p>
+  <b>Total Points:</b>
+  <%= @team.total_points %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @team.cost_to_s %>
+</p>
+
+<p>
+  <b>Remaining:</b>
+  <%= @team.remaining_to_s %>
+</p>
+
+
+<%= show_players -%>
+
+
+<%= link_to 'Back', teams_path %>

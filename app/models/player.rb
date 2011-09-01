@@ -79,4 +79,8 @@ class Player < ActiveRecord::Base
     self.data["total_points"]
   end
   
+  def full_name
+    "#{last_name}, #{first_name}"
+  end
+  
 end
