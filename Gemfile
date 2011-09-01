@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 gem 'mechanize'
-gem 'mysql'
+gem 'mysql' 
+gem 'json'
 
 
 # Bundle edge Rails instead:

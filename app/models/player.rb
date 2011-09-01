@@ -1,5 +1,4 @@
 class Player < ActiveRecord::Base
-  
   serialize :data, Hash # This contains the JSON data from the FF website
   
   # This class is mapped to players from the fantasy football website
@@ -64,6 +63,20 @@ class Player < ActiveRecord::Base
       end
     end
     return "Done!"
+  end
+  
+  #instance Variables to Get stuff out of data.
+  def team 
+    self.data["team_name"]
+  end
+  
+  def value
+    (self.data["now_cost"].to_f/10).to_s
+ 
+  end
+  
+  def total_points
+    self.data["total_points"]
   end
   
 end
