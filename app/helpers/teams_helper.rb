@@ -4,22 +4,22 @@ module TeamsHelper
     
     output = content_tag(:h2, "#{graph_type.titleize} Points").html_safe
     output += content_tag(:tr, content_tag(:th, '<span class=\"auraltext\">Name</span>'.html_safe) + content_tag(:th, '<span class=\"auraltext\">Points</span>'.html_safe).html_safe)
-     
-    @teams.each do |team|
-      points = case graph_type
+    points_type = case graph_type
         when 'total'
-          team.total_points
+          'total_points'
         when 'gameweek'
-          team.gameweek_points
-      else 
-        0
-      end
+          'gameweek_points'
+       end
+    
+    teams_list = @teams.map{|t| [t.send(points_type), t]}.sort {|x,y| y <=> x }
+    teams_list.each do |t|
+      points = t[0]
+      team = t[1]
       if (team == @teams.first)
         class_txt = 'first'
       elsif (team == @teams.last) 
         class_txt = 'first'
       end 
-       
       value_class_txt = "value #{class_txt}"
       row_output = content_tag(:td, link_to(team.manager_name, team_path(team)), :class => class_txt).html_safe
       row_output += content_tag(:td, "#{image_tag('bar.png', :width => points, :height => 16)}#{points}".html_safe, :class => value_class_txt)
