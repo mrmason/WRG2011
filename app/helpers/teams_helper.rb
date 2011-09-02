@@ -48,6 +48,6 @@ module TeamsHelper
 
       output += content_tag(:tr, row_output)
     end
-    content_tag :table, output
+    content_tag :table, output, :class => 'view'
   end
 end
