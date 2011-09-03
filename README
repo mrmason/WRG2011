@@ -2,14 +2,11 @@ West Reading Galaxy - Fantasy Football 2011
 
 Installation Instructions...
 
-1) Download Via Git
-2) bundle install
-3) edit conf/database.yml
-4) rake db:migrate
-5) run Player.full_update from the console
+1) Download via Git
+2) edit conf/database.yml
+3) Edit to lib/team_data.yml with the current team data, see file for file format
+4) # bundle install
+5) # rake db:migrate
+6) # rake deploy
 
-Adding teams to the database
-
-1) Edit to lib/team_data.yml with the current team data, see file for file format
-2) run Team.load_yaml_team_data from the console
-3) Note this will destroy all existing member and players associations for any existing teams, but doesn't matter as long as you didn't delete any data from the YAML file
+Note this will destroy all existing member and players associations for any existing teams, but doesn't matter as long as you didn't delete any data from the YAML file.
