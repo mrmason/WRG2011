@@ -4,6 +4,7 @@
   <tr>
     <th>FFID</th>
     <th>Name</th>
+    <th>Status</th>
     <th>Team</th>
     <th>Value</th>
     <th>Total Points</th>
@@ -14,6 +15,7 @@
   <tr>
     <td><%= link_to player.ff_id, player%></td>
     <td><%= link_to player.full_name, player %></td>
+    <td><%= player.status %>
     <td><%= player.team %></td>
     <td><%= player.value %></td>
     <td><%= player.total_points %></td>

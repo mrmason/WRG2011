@@ -63,7 +63,6 @@ class Team < ActiveRecord::Base
   end
   def remaining_to_s
     return "#{Float(remaining/10)}m"
-
   end
   
 end

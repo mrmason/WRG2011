@@ -1,5 +1,11 @@
 class Player < ActiveRecord::Base
+  
   serialize :data, Hash # This contains the JSON data from the FF website
+  
+  
+  def to_param
+    "#{id}-#{web_name}"
+  end
   
   # This class is mapped to players from the fantasy football website
   
@@ -72,7 +78,6 @@ class Player < ActiveRecord::Base
   
   def value
     "#{(self.data["now_cost"].to_f/10)}m"
- 
   end
   
   def total_points
@@ -85,6 +90,27 @@ class Player < ActiveRecord::Base
   
   def gameweek_points
     self.data["fixture_history"]["summary"].last.last rescue 0
+  end
+  
+  def photo_url
+    "http://fantasy.premierleague.com/#{self.data["photo_mobile_url"]}"
+  end
+  
+  def selected_by
+    self.data["selected_by"]
+  end
+  
+  def status
+    case self.data["status"]
+    when "a"
+      return "Available"
+    when "d"
+      return "Doubtful - #{self.data["news"]}"
+    when "i"
+      return "Injured - #{self.data["news"]}"
+    when "u"
+      return "Unavailable - #{self.data["news"]}"
+    end
   end
   
 end
