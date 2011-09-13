@@ -36,18 +36,28 @@ class Team < ActiveRecord::Base
     end
   end
   
+  def self.home_page
+    teams = Hash.new
+    Team.all.each do |t|
+      teams[t] = t.total_points
+    end
+    return teams.sort {|a,b| a[1] <=> b[1]}.reverse
+  end
+  def fit_players
+    total = 0 
+    self.players.each {|p| total += 1 unless p.status != "Available"}
+    total
+  end
   def total_points
     total = 0 
     self.players.each {|p| total+=p.total_points}
     total
-    
   end
   
   def gameweek_points
     total = 0 
     self.players.each {|p| total+=p.gameweek_points}
     total
-    
   end
   
   def cost

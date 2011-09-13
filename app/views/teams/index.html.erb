@@ -1,30 +1,32 @@
 <h2>Teams</h2>
 
-<%= show_graph('total') -%>
-
-<%= show_graph('gameweek') -%>
-
 <h2>Data</h2>
 
 <table class='view'>
   <tr>
+    <th>#</th>
     <th>Manager name</th>
-    <th>Team name</th>
     <th>Total Points</th>
+    <th>Fit Players</th>
     <th>Cost</th>
     <th>Remaining</th>
   </tr>
-
-<% @teams.each do |team| %>
+<% i = 1 %>
+<% Team.home_page.each do |team,points| %>
   <tr>
-    <td><%= link_to(team.manager_name, team_path(team)) %></td>
-    <td><%= team.team_name %></td>
-    <td><%= team.total_points %></td>
+    <td><%= i %></td>
+    <td><%= link_to(team.team_name, team_path(team)) %></td>
+    <td>
+      <span stlye="width:50px;float:right"><%= points %></span>
+      <%= image_tag('bar.png', :width => points/2, :height => 16, :style=>"float:left;margin-right:5px;") %>
+    </td>
+    <td><%= team.fit_players %></td>
     <td><%= team.cost_to_s %></td>
     <td><%= team.remaining_to_s %></td>
   </tr>
-<% end %>
+<% 
+  i = i+1
+  end %>
 </table>
 
-<br />
-
+<%= show_graph('gameweek') -%>
