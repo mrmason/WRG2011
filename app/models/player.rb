@@ -113,4 +113,12 @@ class Player < ActiveRecord::Base
     end
   end
   
+  def gameweek_scores
+    result = Hash.new
+    self.data["fixture_history"]["all"].each do |score|
+      result[score[1]] = score.last
+    end
+    return result
+  end
+  
 end

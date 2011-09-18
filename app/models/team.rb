@@ -75,4 +75,48 @@ class Team < ActiveRecord::Base
     return "#{Float(remaining/10)}m"
   end
   
+  def self.scores_hash
+    teams = Hash.new
+    Team.all.each do |t|
+      # Build a 38 gameweek blank array
+      team_score = Hash.new
+      i = 1
+      while i < 39
+        team_score[i] = 0
+        i += 1
+      end
+      
+      t.players.each do |p|
+        p.gameweek_scores.each do |gw,ps|
+          team_score[gw] += ps
+        end
+      end
+      teams[t] = {:weekly => team_score}
+    end
+    
+    # Now lets calculate totals
+    teams.each do |t,data|
+      total_score = Hash.new
+      total = 0
+      data[:weekly].each do |gw,gw_score|
+        total_score[gw] = total + gw_score
+        total += gw_score
+      end
+      teams[t][:totals] = total_score
+    end 
+    return teams
+  end
+  
+  def self.team_graph
+    t = Hash.new
+    teams = Team.scores_hash
+    teams.each do |team,data|
+      scores = Array.new
+      data[:totals].each do |wg,total|
+        scores << total
+      end
+      t[team] = scores
+    end
+    return t
+  end
 end

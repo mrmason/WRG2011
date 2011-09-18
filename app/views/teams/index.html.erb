@@ -1,7 +1,3 @@
-<h2>Teams</h2>
-
-<h2>Data</h2>
-
 <table class='view'>
   <tr>
     <th>#</th>
@@ -11,8 +7,10 @@
     <th>Cost</th>
     <th>Remaining</th>
   </tr>
-<% i = 1 %>
-<% Team.home_page.each do |team,points| %>
+<% i = 1
+   z = Team.home_page
+ %>
+<% z.each do |team,points| %>
   <tr>
     <td><%= i %></td>
     <td><%= link_to(team.team_name, team_path(team)) %></td>
@@ -28,3 +26,33 @@
   i = i+1
   end %>
 </table>
+
+<canvas id="example" width="1000" height="800"></canvas>
+
+ <script type="text/javascript">
+   var g = new Bluff.Line('example', '1000x800');
+   g.tooltips = true;
+   g.hide_dots = true;
+   g.line_width = 3;
+   g.y_axis_increment = 50;
+   
+   g.set_theme({
+     colors: ['green', 'blue', 'orange', 'grey', 'red', '#8AB9BF', '#6B3D7A', 'pink', '#8D3F03', '#FBDD3D'],
+     marker_color: '#aea9a9',
+     font_color: 'black',
+     background_colors: ['#ffffff', '#ffffff']
+   });
+
+   <% x = Team.team_graph %>
+   
+   <% z.each do |team,points| %>
+
+    g.data("<%=team.team_name-%>", <%=x[team][0..4]%>);
+   
+   <% end %>
+
+   g.labels = {0: '1', 4: '5', 9: '10'};
+   g.x_axis_label = "Gameweek";
+
+   g.draw();
+ </script>
