@@ -47,11 +47,11 @@
    
    <% z.each do |team,points| %>
 
-    g.data("<%=team.team_name-%>", <%=x[team][0..5]%>);
+    g.data("<%=team.team_name-%>", <%=x[team][0..9]%>);
    
    <% end %>
 
-   g.labels = {0: '1', 2: '3', 5: '6'};
+   g.labels = {0: '1', 4: '5', 9: '10'};
    g.x_axis_label = "Gameweek";
 
    g.draw();
