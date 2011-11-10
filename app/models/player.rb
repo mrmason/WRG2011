@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   
   serialize :data, Hash # This contains the JSON data from the FF website
-  
+  has_one   :member
   
   def to_param
     "#{id}-#{web_name}"

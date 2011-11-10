@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.xml
   def index
-    @players = Player.all
+    @players = Player.all.sort! { |a,b| a.total_points <=> b.total_points }.reverse
 
     respond_to do |format|
       format.html # index.html.erb

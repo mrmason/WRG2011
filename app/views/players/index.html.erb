@@ -4,22 +4,24 @@
   <tr>
     <th>FFID</th>
     <th>Name</th>
-    <th>Status</th>
     <th>Team</th>
     <th>Value</th>
     <th>Total Points</th>
-    <th>Gameweek Points</th>
+    <th>Owner</th>
+    <th>Price Paid</th>
+        <th>Status</th>
   </tr>
 
 <% @players.each do |player| %>
   <tr>
     <td><%= link_to player.ff_id, player%></td>
     <td><%= link_to player.full_name, player %></td>
-    <td><%= player.status %>
     <td><%= player.team %></td>
     <td><%= player.value %></td>
     <td><%= player.total_points %></td>
-    <td><%= player.gameweek_points %></td>
+    <td><%= player.member.team.team_name unless player.member.nil? %></td>
+    <td><%= player.member.price_paid.to_f/10 unless player.member.nil? %></td>
+    <td><%= player.status %></td>
   </tr>
 <% end %>
 </table>
