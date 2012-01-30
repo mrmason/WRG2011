@@ -76,6 +76,10 @@ class Player < ActiveRecord::Base
     self.data["team_name"]
   end
   
+  def type_name
+    self.data["type_name"]
+  end
+  
   def value
     "#{(self.data["now_cost"].to_f/10)}m"
   end
