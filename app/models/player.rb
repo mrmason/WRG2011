@@ -24,10 +24,14 @@ class Player < ActiveRecord::Base
     } 
     # Get each players JSON file, and put in into our database
     Player.all.each do |player|
-      print "Updating Player #{player.web_name}"
-      player.data = JSON.parse(a.get("http://fantasy.premierleague.com/web/api/elements/#{player.ff_id}/").content)
-      player.save
-      puts "."
+      begin
+        print "Updating Player #{player.web_name}"
+        player.data = JSON.parse(a.get("http://fantasy.premierleague.com/web/api/elements/#{player.ff_id}/").content)
+        player.save
+        puts "."
+      rescue
+        puts "ERROR!!!"
+      end
     end
     puts "Done!"
   end
