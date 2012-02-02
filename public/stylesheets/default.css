@@ -19,6 +19,9 @@ table.view td {
   border-left:1px solid #e5e5e5;
 }
 
+table.view img {height: 16px;}
+
+
 ul.menu  {
   list-style-type: none;
   margin: 10px;
@@ -88,6 +91,7 @@ table.chart {
   width: 33em;
 }
 
+
 caption {
   font-size:90%;
   font-style:italic;
@@ -102,4 +106,8 @@ caption {
 }
 .sold td{
 	background: yellow;
+}
+
+.old td{
+  background: white;
 }

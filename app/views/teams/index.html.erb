@@ -6,6 +6,7 @@
     <th>Fit Players</th>
     <th>Original Cost</th>
     <th>Remaining after sales</th>
+    <th>Transfers</th>    
   </tr>
 <% i = 1
    z = Team.home_page
@@ -16,11 +17,13 @@
     <td><%= link_to(team.team_name, team_path(team)) %></td>
     <td>
       <span stlye="width:50px;float:right"><%= points %></span>
-      <%= image_tag('bar.png', :width => points/2, :height => 16, :style=>"float:left;margin-right:5px;") %>
+      <%= image_tag('bar.png', :width => points/4, :height => 16, :style=>"float:left;margin-right:5px;") %>
     </td>
     <td><%= team.fit_players %></td>
     <td><%= team.cost_to_s %></td>
     <td><%= team.remaining_to_s %></td>
+    <td><%= team.spent_on_transfers_to_s %></td>
+    
   </tr>
 <% 
   i = i+1
@@ -28,7 +31,7 @@
 </table>
 
 <canvas id="example" width="1000" height="800"></canvas>
-
+<!--
  <script type="text/javascript">
    var g = new Bluff.Line('example', '1000x800');
    g.tooltips = true;
@@ -56,3 +59,4 @@
 
    g.draw();
  </script>
+-->

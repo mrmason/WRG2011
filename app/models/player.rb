@@ -125,4 +125,20 @@ class Player < ActiveRecord::Base
     return result
   end
   
+  def points_between(start_week, end_week)
+    Rails.logger.debug "START WEEK = #{start_week.inspect}"
+    Rails.logger.debug  "END WEEK = #{end_week.inspect}"
+    Rails.logger.debug self.data["fixture_history"]["all"].last.inspect
+    total = 0
+    if start_week and end_week
+      self.data["fixture_history"]["all"].each do |gameweek|
+        Rails.logger.debug gameweek[1].inspect
+        if (gameweek[1] >= start_week and gameweek[1] <= end_week) 
+           total += gameweek.last      
+        end
+      end  
+    end
+    return total
+  end
+  
 end

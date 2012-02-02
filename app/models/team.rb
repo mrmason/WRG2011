@@ -45,12 +45,13 @@ class Team < ActiveRecord::Base
   end
   def fit_players
     total = 0 
-    self.players.each {|p| total += 1 unless p.status != "Available"}
+    self.members.each {|m| total += 1 if (m.current and m.player.status == "Available")}
     total
   end
   def total_points
     total = 0 
-    self.players.each {|p| total+=p.total_points}
+    
+    self.members.each {|m| Rails.logger.debug m.inspect; total+=m.total_points}
     total
   end
   
@@ -62,7 +63,7 @@ class Team < ActiveRecord::Base
   
   def cost
     total = Float(0)
-    self.members.each {|member| total+=member.price_paid}
+    self.members.each {|member| total+=(member.price_paid ) if member.original}
     total
   end
   
@@ -70,6 +71,12 @@ class Team < ActiveRecord::Base
     total = Float(0)
     self.members.where("end_week != 38").each {|member| total+=member.price_paid}
     total/2
+  end
+  
+  def spent_on_transfers
+    total = Float(0)
+    self.members.each {|member| total+=(member.price_paid ) unless member.original}
+    total    
   end
   
   def remaining
@@ -83,7 +90,10 @@ class Team < ActiveRecord::Base
   def remaining_to_s
     return "#{Float(remaining/10)}m"
   end
-  
+  def spent_on_transfers_to_s
+        return "#{Float(spent_on_transfers/10)}m"
+
+  end
   
   def self.scores_hash
     teams = Hash.new
