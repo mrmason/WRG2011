@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
           #puts "player id #{ff_id}"
           #puts "price_paid #{price_paid}"
           player = Player.find_by_ff_id(ff_id)
-          member = team.members.build({:player_id => player.id, :price_paid => price_paid, :start_week => 1})
+          member = team.members.build({:player_id => player.id, :price_paid => price_paid, :start_week => a[2], :end_week => a[3]})
           puts member.inspect
         end
         puts team.inspect
@@ -65,15 +65,25 @@ class Team < ActiveRecord::Base
     self.members.each {|member| total+=member.price_paid}
     total
   end
-  def remaining
-    1000-cost
+  
+  def sales
+    total = Float(0)
+    self.members.where("end_week != 38").each {|member| total+=member.price_paid}
+    total/2
   end
+  
+  def remaining
+    # need to work out how much everything cost and then credit half for sales
+    1000-cost+sales    
+  end
+  
   def cost_to_s
     return "#{Float(cost/10)}m"
   end
   def remaining_to_s
     return "#{Float(remaining/10)}m"
   end
+  
   
   def self.scores_hash
     teams = Hash.new

@@ -14,7 +14,7 @@
   </tr>
 
 <% @players.each do |player| %>
-  <tr>
+  <tr class="<%=player_row_class(player)%>">
     <td><%= link_to player.ff_id, player%></td>
     <td><%= link_to player.full_name, player %></td>
     <td><%= player.team %></td>
