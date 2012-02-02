@@ -106,9 +106,12 @@ class Team < ActiveRecord::Base
         i += 1
       end
       
-      t.players.each do |p|
-        p.gameweek_scores.each do |gw,ps|
-          team_score[gw] += ps
+      t.members.each do |m|
+        m.player.gameweek_scores.each do |gw,ps|
+          #test to see if the player is active in that gameweek
+          if (gw >= m.start_week and gw <= m.end_week)
+            team_score[gw] += ps
+          end
         end
       end
       teams[t] = {:weekly => team_score}
